@@ -1,5 +1,31 @@
-@import 'tailwindcss';
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-.azul-ciano {
-    color:aquamarine
+
+.tooper{
+     background-color: #21272B;
+     font-size: 30px;
+     box-sizing: content-box;
+     position: absolute;
+     left: 50px;
+}
+.tooper2{
+     background-color: #21272B;
+     box-sizing: content-box;
+}
+
+.img1{
+     background-color: #21272B;
+     position: relative;
+     
+
+}
+.nav-bar{
+    display: flex; 
+    background-color: #21272B
+     
+
 }
