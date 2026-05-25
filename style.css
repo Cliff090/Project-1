@@ -6,16 +6,19 @@
 }
 
 :root {
-    /* Paleta de Cores baseada na imagem */
-    --header-bg-color: #2e3035;
-    --hero-cta-bg: #1e262e; /* Fundo escuro da caixa do banner */
-    --footer-bg-color: #e6e6e6;
-    --text-white: #ffffff;
+    /* Cores Exatas do Layout */
+    --body-bg-color: #EBEBEB;
+    --header-bg-color: #21272B;      /* Cor do topo */
+    --hero-cta-bg: #1A3243;          /* Quadro sobre a imagem */
+    
+    --text-white: #FFFFFF;
     --text-dark: #333333;
+    --text-menu-blue: #1BB4E8;       /* Texto azul do menu */
+    --text-marrom: #C6B07F;          /* Texto marrom do quadro (telefone) */
     
     /* Cores dos cabeçalhos das seções */
-    --blue-section-header: #70ddf1;
-    --beige-section-header: #e1cca0;
+    --blue-section-header: #70DDF1;
+    --beige-section-header: #E1CCA0;
     
     /* Espaçamentos */
     --container-max-width: 1200px;
@@ -24,7 +27,7 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f4f4;
+    background-color: var(--body-bg-color);
     color: var(--text-dark);
     line-height: 1.6;
 }
@@ -47,7 +50,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap; /* Permite quebra em telas menores */
+    flex-wrap: wrap;
 }
 
 .logo {
@@ -57,25 +60,26 @@ body {
     color: var(--text-white);
 }
 
-.icon-boat {
-    font-size: 2.5rem;
-    line-height: 1;
+.logo-img {
+    height: 50px; /* Ajuste conforme necessário */
+    width: auto;
 }
 
 .logo-text {
     display: flex;
     flex-direction: column;
+    /* Ajuste para o nome "Luxo" parecer mais fino como na imagem */
 }
 
 .brand {
-    font-size: 1.4rem;
-    font-weight: 300;
-    letter-spacing: 1px;
+    font-size: 1.5rem;
+    font-weight: 200;
+    letter-spacing: 2px;
 }
 
 .sub-brand {
     font-size: 1.2rem;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 /* Navegação */
@@ -91,7 +95,7 @@ body {
     font-size: 0.85rem;
     font-weight: bold;
     text-transform: uppercase;
-    border-right: 1px solid #555;
+    border-right: 1px solid #444;
     padding-right: 15px;
 }
 
@@ -99,8 +103,9 @@ body {
     border-right: none;
 }
 
-.main-nav a:hover {
-    color: var(--blue-section-header); /* Cor de interação */
+/* Cor azul no link ativo ou hover */
+.main-nav a:hover, .main-nav a.active {
+    color: var(--text-menu-blue);
 }
 
 /* =================================
@@ -109,34 +114,31 @@ body {
 .hero-section {
     position: relative;
     width: 100%;
-    height: auto;
     overflow: hidden;
 }
 
 .hero-image {
     width: 100%;
-    height: 500px; /* Altura do banner */
+    height: 500px;
     background-size: cover;
     background-position: center;
 }
 
 .hero-content {
     position: relative;
-    max-width: 1200px; /* Reaplicando para evitar estouro */
+    max-width: var(--container-max-width);
     margin: 0 auto;
 }
 
 .hero-cta-box {
     position: absolute;
     top: 50%;
-    right: 20px; /* Alinhado à direita */
+    right: 20px;
     transform: translateY(-50%);
     background-color: var(--hero-cta-bg);
     color: var(--text-white);
-    padding: 40px;
+    padding: 30px 40px;
     max-width: 450px;
-    border-radius: 4px;
-    opacity: 0.9;
 }
 
 .hero-tagline {
@@ -162,12 +164,13 @@ body {
     font-weight: 300;
 }
 
+/* Cor exata do telefone (Marrom) */
 .phone-number {
     display: block;
     font-size: 1.2rem;
     font-weight: bold;
     margin-top: 5px;
-    color: #eed89c; /* Cor do telefone */
+    color: var(--text-marrom);
 }
 
 /* =================================
@@ -181,24 +184,26 @@ body {
 }
 
 .content-column {
-    flex: 1; /* Cada coluna ocupa 50% do espaço */
+    flex: 1;
     background-color: #fff;
-    padding-bottom: 20px; /* Espaço extra no final */
+    padding-bottom: 20px;
 }
 
 /* Cabeçalhos das colunas */
 .section-header {
-    padding: 10px 15px;
+    padding: 12px 15px;
     color: var(--text-white);
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
+/* Cor Azul Ciano */
 .blue-header {
     background-color: var(--blue-section-header);
 }
 
+/* Cor Bege */
 .beige-header {
     background-color: var(--beige-section-header);
 }
@@ -212,7 +217,7 @@ body {
     font-weight: normal;
 }
 
-/* Textos (Título e Parágrafo) */
+/* Textos */
 .text-content {
     padding: 20px;
 }
@@ -222,7 +227,7 @@ body {
     color: #444;
     margin-bottom: 10px;
     font-weight: normal;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
 .text-content p {
@@ -239,7 +244,7 @@ body {
     padding: 0 20px;
 }
 
-/* Grid da Frota (Layout em 2 colunas) */
+/* Grid da Frota (2x2) */
 .frota-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -257,11 +262,11 @@ body {
    FOOTER (Rodapé)
    ================================= */
 .main-footer {
-    background-color: var(--footer-bg-color);
+    background-color: #DCDCDC;
     padding: 20px 0;
     margin-top: 20px;
     border-top: 1px solid #ddd;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: #666;
 }
 
@@ -270,17 +275,20 @@ body {
    ================================= */
 @media (max-width: 900px) {
     .main-content-section {
-        flex-direction: column; /* Colunas viram linhas no mobile */
+        flex-direction: column;
     }
     
     .hero-cta-box {
-        position: relative;
-        top: 0;
-        right: 0;
+        position: static;
         transform: none;
         max-width: 100%;
-        margin: 0;
+        width: 100%;
+        padding: 20px;
         text-align: center;
+    }
+
+    .hero-image {
+        height: 250px;
     }
     
     .hero-contact {
@@ -290,10 +298,11 @@ body {
     .header-container {
         flex-direction: column;
         align-items: flex-start;
+        gap: 15px;
     }
     
     .main-nav ul {
-        margin-top: 15px;
         flex-wrap: wrap;
+        gap: 10px;
     }
 }
