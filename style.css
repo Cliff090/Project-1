@@ -1,57 +1,62 @@
 /* ==========================================================================
-   Reset e Configuração Geral
+   RESET & CONFIGURAÇÕES GERAIS
    ========================================================================== */
-* {
+*, 
+*::before, 
+*::after {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; /* Previne erros de quebra de largura com padding */
 }
 
 :root {
-    /* Cores Exatas do Layout */
-    --body-bg-color: #EBEBEB;         /* Cor do body */
-    --header-bg-color: #21272B;       /* Cor do topo */
-    --hero-cta-bg: #1A3243;           /* Quadro sobre a imagem */
+    /* Cores Institucionais extraídas do arquivo Layout txt */
+    --body-bg: #EBEBEB;
+    --header-bg: #21272B;
+    --hero-box-bg: #1A3243;
     
-    --text-white: #FFFFFF;            /* Cor do texto branco do menu */
+    /* Cores de Tipografia */
+    --text-white: #FFFFFF;
     --text-dark: #333333;
-    --text-menu-blue: #1BB4E8;        /* Cor do texto azul do menu */
-    --text-marrom: #C6B07F;           /* Cor do texto Marron do quadro */
+    --text-muted: #555555;
+    --menu-blue: #1BB4E8;
+    --text-gold: #C6B07F;
     
-    /* Cores dos cabeçalhos das seções (Extraídas visualmente do Projeto) */
-    --blue-section-header: #10ade4;
-    --beige-section-header: #c5b48e;
+    /* Cores das Faixas do Projeto.jpg */
+    --header-blue: #10ADE4;
+    --header-beige: #C5B48E;
     
-    /* Espaçamentos */
-    --container-max-width: 980px;     /* Alinhamento padrão estilo Wix centralizado */
-    --spacing-standard: 20px;
+    /* Dimensões do Grid principal */
+    --max-width: 980px;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif; /* Fonte padrão limpa do layout */
-    background-color: var(--body-bg-color);   /* */
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--body-bg);
     color: var(--text-dark);
     line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
-    max-width: var(--container-max-width);
+    max-width: var(--max-width);
     margin: 0 auto;
-    padding: 0 var(--spacing-standard);
+    padding: 0 20px;
 }
 
-/* Wrapper principal para conter o layout fluido */
 .site-wrapper {
     width: 100%;
-    background-color: var(--body-bg-color);   /* */
+    min-height: 100vh;
+    display: block;
 }
 
 /* ==========================================================================
-   HEADER (Cabeçalho)
+   HEADER / MENU DE NAVEGAÇÃO
    ========================================================================== */
 .main-header {
-    background-color: var(--header-bg-color); /* */
-    padding: 20px 0;
+    background-color: var(--header-bg);
+    padding: 22px 0;
 }
 
 .header-container {
@@ -67,30 +72,29 @@ body {
 }
 
 .logo img {
-    height: 38px;
-    width: auto;
+    display: block;
 }
 
 .logo-text {
     display: flex;
     flex-direction: column;
-    color: var(--text-white);
+    line-height: 1.1;
 }
 
 .brand {
-    font-size: 1.15rem;
+    color: var(--text-white);
+    font-size: 1.3rem;
     font-weight: normal;
     letter-spacing: 0.5px;
 }
 
 .sub-brand {
+    color: var(--text-white);
     font-size: 0.95rem;
     font-style: italic;
-    font-weight: normal;
-    opacity: 0.9;
+    opacity: 0.85;
 }
 
-/* Navegação */
 .main-nav ul {
     list-style: none;
     display: flex;
@@ -102,43 +106,39 @@ body {
     align-items: center;
 }
 
-.main-nav a {
+.main-nav .nav-link {
     text-decoration: none;
-    color: var(--text-white);                 /* */
-    font-size: 0.68rem;
-    font-weight: normal;
+    color: var(--text-white);
+    font-size: 0.72rem;
     letter-spacing: 1px;
-    padding: 0 15px;
-    transition: color 0.2s ease;
+    padding: 0 14px;
+    transition: color 0.2s ease-in-out;
 }
 
-/* Divisores verticais brancos e finos entre os links */
+/* Divisores estéticos verticais (|) entre os links */
 .main-nav li:not(:last-child)::after {
     content: "|";
     color: var(--text-white);
-    font-size: 0.7rem;
-    opacity: 0.5;
+    font-size: 0.75rem;
+    opacity: 0.4;
 }
 
-.main-nav a:hover, 
-.main-nav a.active {
-    color: var(--text-menu-blue);             /* */
+.main-nav .nav-link:hover, 
+.main-nav .nav-link.active {
+    color: var(--menu-blue);
 }
 
 /* ==========================================================================
-   HERO SECTION (Banner Principal)
+   HERO BANNER (Ajustado com a foto limpa do iate)
    ========================================================================== */
 .hero-section {
     position: relative;
     width: 100%;
-    height: 480px;
-}
-
-.hero-image {
-    width: 100%;
-    height: 100%;
+    height: 460px;
+    background-image: url('barcoprincipal.jpg');
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
 }
 
 .hero-content {
@@ -146,44 +146,41 @@ body {
     height: 100%;
 }
 
-/* Quadro flutuante sobre a imagem do iate */
 .hero-cta-box {
     position: absolute;
     top: 50%;
-    right: var(--spacing-standard);
+    right: 20px;
     transform: translateY(-50%);
-    background-color: rgba(26, 50, 67, 0.9);   /* Opacidade sutil para casar com o render */
+    background-color: rgba(26, 50, 67, 0.92);
     color: var(--text-white);
-    padding: 35px;
-    width: 380px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    padding: 35px 40px;
+    width: 390px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 }
 
 .hero-tagline {
-    font-size: 1.25rem;
+    font-size: 1.35rem;
     font-style: italic;
-    font-weight: normal;
-    line-height: 1.5;
+    line-height: 1.4;
     margin-bottom: 25px;
+    font-weight: normal;
 }
 
 .hero-contact {
     display: flex;
     align-items: center;
     gap: 12px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding-top: 18px;
 }
 
-/* Estilização do ícone barco2.png na chamada */
 .contact-icon {
-    width: 20px;
-    height: auto;
+    display: block;
 }
 
 .contact-text {
-    font-size: 0.8rem;
-    line-height: 1.4;
+    font-size: 0.82rem;
+    line-height: 1.45;
 }
 
 .contact-text strong {
@@ -192,20 +189,18 @@ body {
 }
 
 .phone-number {
-    display: inline;
     font-weight: bold;
-    color: var(--text-marrom);                /* */
-    margin-left: 3px;
+    color: var(--text-gold);
+    margin-left: 4px;
 }
 
 /* ==========================================================================
-   MAIN CONTENT (Estrutura de Duas Colunas Assíncronas)
+   MAIN CONTENT / COLUNAS ASSÍNCRONAS
    ========================================================================== */
-.main-content-section {
+.main-content {
     display: flex;
     gap: 40px;
-    padding-top: 30px;
-    padding-bottom: 50px;
+    padding: 35px 0 55px 0;
 }
 
 .content-column {
@@ -214,7 +209,6 @@ body {
     flex-direction: column;
 }
 
-/* Faixas horizontais de cabeçalho das colunas */
 .section-header {
     padding: 10px 15px;
     color: var(--text-white);
@@ -224,18 +218,15 @@ body {
 }
 
 .blue-header {
-    background-color: var(--blue-section-header);
+    background-color: var(--header-blue);
 }
 
 .beige-header {
-    background-color: var(--beige-section-header);
+    background-color: var(--header-beige);
 }
 
-/* Alinhamento dos ícones timão (.png) inseridos */
 .section-icon-img {
-    width: 22px;
-    height: 22px;
-    object-fit: contain;
+    display: block;
 }
 
 .section-header h2 {
@@ -244,96 +235,83 @@ body {
     font-style: italic;
 }
 
-/* Textos descritivos abaixo dos cabeçalhos */
 .text-content {
     padding: 20px 0;
 }
 
 .text-content h3 {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: normal;
     font-style: italic;
-    color: #333333;
-    margin-bottom: 15px;
+    color: #222222;
+    margin-bottom: 12px;
 }
 
 .text-content p {
     font-size: 0.78rem;
-    color: #555555;
+    color: var(--text-muted);
     line-height: 1.6;
     text-align: justify;
 }
 
-/* Coluna Destinos - Bloco de Imagem Única */
+/* Estilização e Grid de Imagens */
 .image-wrapper img {
     width: 100%;
     height: auto;
     display: block;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
-/* Coluna Nossa Frota - Bloco em Grid Dinâmico 2x2 */
 .frota-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
 }
 
 .grid-item img {
     width: 100%;
-    height: 115px; /* Altura fixa para manter simetria perfeita do grid */
-    object-fit: cover;
+    height: 110px;
+    object-fit: cover; /* Recorta proporcionalmente as fotos sem distorcer */
     display: block;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 /* ==========================================================================
-   FOOTER (Rodapé)
+   FOOTER / RODAPÉ
    ========================================================================== */
 .main-footer {
     background-color: #E1E1E1;
     padding: 25px 0;
     border-top: 1px solid #D6D6D6;
     font-size: 0.72rem;
-    color: #777777;
-}
-
-.main-footer .container {
-    display: flex;
-    justify-content: flex-start;
+    color: #666666;
 }
 
 /* ==========================================================================
-   RESPONSIVIDADE (Ajustes para Mobile e Tablets)
+   RESPONSIVIDADE (Layout Fluido)
    ========================================================================== */
-@media (max-width: 900px) {
+@media (max-width: 850px) {
     .header-container {
         flex-direction: column;
-        gap: 20px;
+        gap: 15px;
         text-align: center;
-    }
-
-    .logo {
-        flex-direction: column;
-        gap: 5px;
     }
 
     .main-nav ul {
         flex-wrap: wrap;
         justify-content: center;
-        gap: 8px;
     }
 
     .main-nav li:not(:last-child)::after {
-        content: none;
+        content: none; /* Remove a barra separadora no mobile */
+    }
+
+    .main-nav .nav-link {
+        padding: 6px 12px;
     }
 
     .hero-section {
         height: auto;
-    }
-
-    .hero-image {
-        height: 300px;
+        background-image: none;
+        background-color: #12222E;
     }
 
     .hero-cta-box {
@@ -343,16 +321,12 @@ body {
         transform: none;
         width: 100%;
         box-shadow: none;
-        padding: 25px var(--spacing-standard);
+        padding: 30px 20px;
     }
 
-    .main-content-section {
+    .main-content {
         flex-direction: column;
-        gap: 40px;
-        padding: 30px var(--spacing-standard);
-    }
-    
-    .frota-grid {
-        grid-template-columns: 1fr 1fr;
+        gap: 35px;
+        padding: 25px 20px;
     }
 }
