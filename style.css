@@ -1,4 +1,6 @@
-/* Reset e Configuração Geral */
+/* ==========================================================================
+   Reset e Configuração Geral
+   ========================================================================== */
 * {
     margin: 0;
     padding: 0;
@@ -7,29 +9,29 @@
 
 :root {
     /* Cores Exatas do Layout */
-    --body-bg-color: #EBEBEB;
-    --header-bg-color: #21272B;      /* Cor do topo */
-    --hero-cta-bg: #1A3243;          /* Quadro sobre a imagem */
+    --body-bg-color: #EBEBEB;         /* Cor do body */
+    --header-bg-color: #21272B;       /* Cor do topo */
+    --hero-cta-bg: #1A3243;           /* Quadro sobre a imagem */
     
-    --text-white: #FFFFFF;
+    --text-white: #FFFFFF;            /* Cor do texto branco do menu */
     --text-dark: #333333;
-    --text-menu-blue: #1BB4E8;       /* Texto azul do menu */
-    --text-marrom: #C6B07F;          /* Texto marrom do quadro (telefone) */
+    --text-menu-blue: #1BB4E8;        /* Cor do texto azul do menu */
+    --text-marrom: #C6B07F;           /* Cor do texto Marron do quadro */
     
-    /* Cores dos cabeçalhos das seções */
-    --blue-section-header: #70DDF1;
-    --beige-section-header: #E1CCA0;
+    /* Cores dos cabeçalhos das seções (Extraídas visualmente do Projeto) */
+    --blue-section-header: #10ade4;
+    --beige-section-header: #c5b48e;
     
     /* Espaçamentos */
-    --container-max-width: 1200px;
+    --container-max-width: 980px;     /* Alinhamento padrão estilo Wix centralizado */
     --spacing-standard: 20px;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--body-bg-color);
+    font-family: Arial, Helvetica, sans-serif; /* Fonte padrão limpa do layout */
+    background-color: var(--body-bg-color);   /* */
     color: var(--text-dark);
-    line-height: 1.6;
+    line-height: 1.4;
 }
 
 .container {
@@ -38,271 +40,319 @@ body {
     padding: 0 var(--spacing-standard);
 }
 
-/* =================================
+/* Wrapper principal para conter o layout fluido */
+.site-wrapper {
+    width: 100%;
+    background-color: var(--body-bg-color);   /* */
+}
+
+/* ==========================================================================
    HEADER (Cabeçalho)
-   ================================= */
+   ========================================================================== */
 .main-header {
-    background-color: var(--header-bg-color);
-    padding: 15px 0;
+    background-color: var(--header-bg-color); /* */
+    padding: 20px 0;
 }
 
 .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
 }
 
 .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
-    color: var(--text-white);
+    gap: 12px;
 }
 
-.logo-img {
-    height: 50px; /* Ajuste conforme necessário */
+.logo img {
+    height: 38px;
     width: auto;
 }
 
 .logo-text {
     display: flex;
     flex-direction: column;
-    /* Ajuste para o nome "Luxo" parecer mais fino como na imagem */
+    color: var(--text-white);
 }
 
 .brand {
-    font-size: 1.5rem;
-    font-weight: 200;
-    letter-spacing: 2px;
+    font-size: 1.15rem;
+    font-weight: normal;
+    letter-spacing: 0.5px;
 }
 
 .sub-brand {
-    font-size: 1.2rem;
-    font-weight: 400;
+    font-size: 0.95rem;
+    font-style: italic;
+    font-weight: normal;
+    opacity: 0.9;
 }
 
 /* Navegação */
 .main-nav ul {
     list-style: none;
     display: flex;
-    gap: 15px;
+    align-items: center;
+}
+
+.main-nav li {
+    display: flex;
+    align-items: center;
 }
 
 .main-nav a {
     text-decoration: none;
+    color: var(--text-white);                 /* */
+    font-size: 0.68rem;
+    font-weight: normal;
+    letter-spacing: 1px;
+    padding: 0 15px;
+    transition: color 0.2s ease;
+}
+
+/* Divisores verticais brancos e finos entre os links */
+.main-nav li:not(:last-child)::after {
+    content: "|";
     color: var(--text-white);
-    font-size: 0.85rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    border-right: 1px solid #444;
-    padding-right: 15px;
+    font-size: 0.7rem;
+    opacity: 0.5;
 }
 
-.main-nav ul li:last-child a {
-    border-right: none;
+.main-nav a:hover, 
+.main-nav a.active {
+    color: var(--text-menu-blue);             /* */
 }
 
-/* Cor azul no link ativo ou hover */
-.main-nav a:hover, .main-nav a.active {
-    color: var(--text-menu-blue);
-}
-
-/* =================================
+/* ==========================================================================
    HERO SECTION (Banner Principal)
-   ================================= */
+   ========================================================================== */
 .hero-section {
     position: relative;
     width: 100%;
-    overflow: hidden;
+    height: 480px;
 }
 
 .hero-image {
     width: 100%;
-    height: 500px;
+    height: 100%;
     background-size: cover;
     background-position: center;
 }
 
 .hero-content {
     position: relative;
-    max-width: var(--container-max-width);
-    margin: 0 auto;
+    height: 100%;
 }
 
+/* Quadro flutuante sobre a imagem do iate */
 .hero-cta-box {
     position: absolute;
     top: 50%;
-    right: 20px;
+    right: var(--spacing-standard);
     transform: translateY(-50%);
-    background-color: var(--hero-cta-bg);
+    background-color: rgba(26, 50, 67, 0.9);   /* Opacidade sutil para casar com o render */
     color: var(--text-white);
-    padding: 30px 40px;
-    max-width: 450px;
+    padding: 35px;
+    width: 380px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .hero-tagline {
-    font-size: 1.6rem;
+    font-size: 1.25rem;
     font-style: italic;
+    font-weight: normal;
+    line-height: 1.5;
     margin-bottom: 25px;
-    font-weight: 300;
 }
 
 .hero-contact {
     display: flex;
-    align-items: flex-start;
-    gap: 10px;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 15px;
 }
 
-.icon-phone {
-    font-size: 1.5rem;
-    margin-top: 5px;
+/* Estilização do ícone barco2.png na chamada */
+.contact-icon {
+    width: 20px;
+    height: auto;
 }
 
 .contact-text {
-    font-size: 1rem;
-    font-weight: 300;
+    font-size: 0.8rem;
+    line-height: 1.4;
 }
 
-/* Cor exata do telefone (Marrom) */
+.contact-text strong {
+    font-weight: normal;
+    font-style: italic;
+}
+
 .phone-number {
-    display: block;
-    font-size: 1.2rem;
+    display: inline;
     font-weight: bold;
-    margin-top: 5px;
-    color: var(--text-marrom);
+    color: var(--text-marrom);                /* */
+    margin-left: 3px;
 }
 
-/* =================================
-   MAIN CONTENT (Duas Colunas)
-   ================================= */
+/* ==========================================================================
+   MAIN CONTENT (Estrutura de Duas Colunas Assíncronas)
+   ========================================================================== */
 .main-content-section {
     display: flex;
-    gap: 30px;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    gap: 40px;
+    padding-top: 30px;
+    padding-bottom: 50px;
 }
 
 .content-column {
     flex: 1;
-    background-color: #fff;
-    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Cabeçalhos das colunas */
+/* Faixas horizontais de cabeçalho das colunas */
 .section-header {
-    padding: 12px 15px;
+    padding: 10px 15px;
     color: var(--text-white);
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-/* Cor Azul Ciano */
 .blue-header {
     background-color: var(--blue-section-header);
 }
 
-/* Cor Bege */
 .beige-header {
     background-color: var(--beige-section-header);
 }
 
-.section-icon {
-    font-size: 1.5rem;
+/* Alinhamento dos ícones timão (.png) inseridos */
+.section-icon-img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
 }
 
 .section-header h2 {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     font-weight: normal;
+    font-style: italic;
 }
 
-/* Textos */
+/* Textos descritivos abaixo dos cabeçalhos */
 .text-content {
-    padding: 20px;
+    padding: 20px 0;
 }
 
 .text-content h3 {
-    font-style: italic;
-    color: #444;
-    margin-bottom: 10px;
-    font-weight: normal;
     font-size: 1.1rem;
+    font-weight: normal;
+    font-style: italic;
+    color: #333333;
+    margin-bottom: 15px;
 }
 
 .text-content p {
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 10px;
+    font-size: 0.78rem;
+    color: #555555;
+    line-height: 1.6;
+    text-align: justify;
 }
 
-/* Imagem dos Destinos */
+/* Coluna Destinos - Bloco de Imagem Única */
 .image-wrapper img {
     width: 100%;
     height: auto;
     display: block;
-    padding: 0 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
-/* Grid da Frota (2x2) */
+/* Coluna Nossa Frota - Bloco em Grid Dinâmico 2x2 */
 .frota-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    padding: 0 20px;
+    gap: 12px;
 }
 
 .grid-item img {
     width: 100%;
-    height: auto;
+    height: 115px; /* Altura fixa para manter simetria perfeita do grid */
+    object-fit: cover;
     display: block;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
-/* =================================
+/* ==========================================================================
    FOOTER (Rodapé)
-   ================================= */
+   ========================================================================== */
 .main-footer {
-    background-color: #DCDCDC;
-    padding: 20px 0;
-    margin-top: 20px;
-    border-top: 1px solid #ddd;
-    font-size: 0.8rem;
-    color: #666;
+    background-color: #E1E1E1;
+    padding: 25px 0;
+    border-top: 1px solid #D6D6D6;
+    font-size: 0.72rem;
+    color: #777777;
 }
 
-/* =================================
-   RESPONSIVIDADE (Mobile/Tablet)
-   ================================= */
+.main-footer .container {
+    display: flex;
+    justify-content: flex-start;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE (Ajustes para Mobile e Tablets)
+   ========================================================================== */
 @media (max-width: 900px) {
-    .main-content-section {
+    .header-container {
         flex-direction: column;
-    }
-    
-    .hero-cta-box {
-        position: static;
-        transform: none;
-        max-width: 100%;
-        width: 100%;
-        padding: 20px;
+        gap: 20px;
         text-align: center;
     }
 
-    .hero-image {
-        height: 250px;
-    }
-    
-    .hero-contact {
-        justify-content: center;
+    .logo {
+        flex-direction: column;
+        gap: 5px;
     }
 
-    .header-container {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
-    }
-    
     .main-nav ul {
         flex-wrap: wrap;
-        gap: 10px;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .main-nav li:not(:last-child)::after {
+        content: none;
+    }
+
+    .hero-section {
+        height: auto;
+    }
+
+    .hero-image {
+        height: 300px;
+    }
+
+    .hero-cta-box {
+        position: relative;
+        top: 0;
+        right: 0;
+        transform: none;
+        width: 100%;
+        box-shadow: none;
+        padding: 25px var(--spacing-standard);
+    }
+
+    .main-content-section {
+        flex-direction: column;
+        gap: 40px;
+        padding: 30px var(--spacing-standard);
+    }
+    
+    .frota-grid {
+        grid-template-columns: 1fr 1fr;
     }
 }
