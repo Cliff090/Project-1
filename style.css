@@ -6,27 +6,27 @@
 *::after {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* Previne erros de quebra de largura com padding */
+    box-sizing: border-box; 
 }
 
 :root {
-    /* Cores Institucionais extraídas do arquivo Layout txt */
+    
     --body-bg: #EBEBEB;
     --header-bg: #21272B;
     --hero-box-bg: #1A3243;
     
-    /* Cores de Tipografia */
+    
     --text-white: #FFFFFF;
     --text-dark: #333333;
     --text-muted: #555555;
     --menu-blue: #1BB4E8;
     --text-gold: #C6B07F;
     
-    /* Cores das Faixas do Projeto.jpg */
+    
     --header-blue: #10ADE4;
     --header-beige: #C5B48E;
     
-    /* Dimensões do Grid principal */
+    
     --max-width: 980px;
 }
 
